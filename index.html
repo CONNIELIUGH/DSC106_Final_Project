@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Pattern Analysis - DSC 106 Final Project</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+
+        .writeup-section {
+            margin-bottom: 40px;
+        }
+
+        .writeup-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .writeup-section h3 {
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .writeup-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.1em;
+        }
+
+        .controls-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .control-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .control-group select, .control-group input {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .control-group select:focus, .control-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .update-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .update-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .visualization-container {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 25px;
+            background: white;
+            margin-bottom: 30px;
+        }
+
+        .chart-title {
+            text-align: center;
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .axis-label {
+            font-size: 14px;
+            fill: #666;
+        }
+
+        .stage-legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 15px;
+            border-radius: 3px;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .loading {
+            text-align: center;
+            color: #667eea;
+            font-size: 1.2em;
+            padding: 40px;
+        }
+
+        .github-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="github-link">View on GitHub</a>
+
+    <div class="container">
+        <div class="header">
+            <h1>Sleep Pattern Analysis</h1>
+            <p>Interactive Exploration of Sleep-EDF Database</p>
+            <p><em>DSC 106 Final Project</em></p>
+        </div>
+
+        <div class="main-content">
+            <div class="writeup-section">
+                <h2>Project Overview</h2>
+                
+                <h3>What have you done so far?</h3>
+                <p>We have successfully converted the Sleep-EDF Database Expanded from its original EDF format into JSON format suitable for web-based D3.js visualizations. This involved parsing 50 polysomnographic sleep recordings, extracting hypnogram data (sleep stage annotations), and organizing the metadata including subject demographics, study conditions, and sleep statistics. The converted dataset includes both Sleep Cassette (SC) and Sleep Telemetry (ST) studies, with the ST data specifically containing paired recordings of subjects with and without temazepam (sleep medication).</p>
+                
+                <p>We have created an interactive web application that allows users to explore sleep patterns through dynamic hypnogram visualizations. We have implemented real-time statistics calculation and display, showing sleep efficiency, REM percentage, deep sleep duration, and other key sleep metrics that update based on the selected filters.</p>
+                
+                <p>The visualization system uses D3.js to use hypnograms as interactive timeline charts, where each sleep stage is color-coded and users can hover over segments to see detailed information about duration and timing. We have also integrated statistical summaries that provide immediate insights into the selected data subset, making sleep research easy to understand for both technical and non-technical audiences.</p>
+                
+                <h3>What will be the most challenging of your project to design and why?</h3>
+                <p>The most challenging aspect of this project will be creating meaningful predictive algorithms that can generate realistic personalized hypnograms (or find a use a new graph) based on user inputs like age, bedtime, wakeup time, and medication use. This requires developing models that capture the relationships between demographic factors and sleep architecture patterns observed in the Sleep-EDF dataset, while ensuring the predictions remain scientifically accurate and representative of real sleep data.</p>
+                
+                <p>The technical complexity of handling large-scale time-series data while maintaining responsive interactivity is also a challenge, particularly when implementing real-time filtering and comparison features across multiple subjects and conditions. Using D3.js performance for rendering hundreds of sleep recordings simultaneously, while preserving smooth animations and transitions, can be difficult at times.</p>
+                
+                <p>Finally, the most challenging aspect will be designing effective comparative visualizations that can clearly demonstrate the effects of variables like age and medication on sleep patterns. This requires creating visual encodings that make statistical differences apparent while avoiding misleading representations of the data, especially when dealing with individual variation and the need to show both population trends and personal relevance to users.</p>
+            </div>
+
+            <div class="controls-section">
+                <h3>Explore Sleep Data</h3>
+                <div class="controls-grid">
+                    <div class="control-group">
+                        <label for="subject-select">Subject:</label>
+                        <select id="subject-select">
+                            <option value="random">Random Subject</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="time-scale">Time Scale:</label>
+                        <select id="time-scale">
+                            <option value="hours">Hours</option>
+                            <option value="minutes">Minutes</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="update-btn" onclick="updateVisualization()">Update Visualization</button>
+            </div>
+
+            <div class="visualization-container">
+                <div class="chart-title">Interactive Sleep Hypnogram</div>
+                <div id="loading" class="loading">Loading sleep data...</div>
+                <div id="hypnogram-chart"></div>
+                
+                <div class="stage-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #ff6b6b;"></div>
+                        <span>Wake</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #4ecdc4;"></div>
+                        <span>REM</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #45b7d1;"></div>
+                        <span>N1 (Light Sleep)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #96ceb4;"></div>
+                        <span>N2 (Light Sleep)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #feca57;"></div>
+                        <span>N3 (Deep Sleep)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-section" id="sleep-stats">
+                <!-- Statistics will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        let sleepData = [];
+        let currentData = null;
+        const stageColors = {
+            'Wake': '#ff6b6b',
+            'REM': '#4ecdc4', 
+            'N1': '#45b7d1',
+            'N2': '#96ceb4',
+            'N3': '#feca57',
+            'N4': '#f39c12',
+            'Movement': '#e74c3c',
+            'Unknown': '#95a5a6'
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Sleep visualization app starting...');
+            loadSleepData();
+        });
+
+        async function loadSleepData() {
+            try {
+                const response = await fetch('converted_json_data/combined_sleep_data.json');
+                if (!response.ok) {
+                    throw new Error('Combined data not found, loading sample data');
+                }
+                
+                const rawData = await response.json();
+                console.log(`Raw data loaded: ${rawData.length} files`);
+                
+                sleepData = rawData.filter(recording => {
+                    const hypnogram = recording.data.hypnogram;
+                    const isComplete = hypnogram && hypnogram.length >= 100;
+                    if (!isComplete) {
+                        console.log(`Filtering out ${recording.filename}: only ${hypnogram ? hypnogram.length : 0} epochs`);
+                    }
+                    return isComplete;
+                });
+                
+                console.log(`Filtered data: ${sleepData.length} complete recordings`);
+                
+                if (sleepData.length === 0) {
+                    throw new Error('No complete recordings found, using sample data');
+                }
+                
+            } catch (error) {
+                console.log('Loading sample data for demonstration:', error.message);
+                sleepData = generateSampleData();
+            }
+            
+            populateControls();
+            updateVisualization();
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        function generateSampleData() {
+            const sampleRecordings = [];
+            
+            for (let i = 0; i < 15; i++) {
+                const subjectId = 10 + i;
+                
+                const hypnogram = generateRealisticHypnogram();
+                
+                sampleRecordings.push({
+                    filename: `ST70${subjectId}J0-Hypnogram.edf`,
+                    subject_id: subjectId,
+                    data: {
+                        metadata: {
+                            subject_id: subjectId,
+                            study_type: 'Sleep Telemetry',
+                            recording_info: {
+                                duration_hours: 8,
+                                total_epochs: hypnogram.length
+                            }
+                        },
+                        hypnogram: hypnogram,
+                        summary_stats: calculateSleepStats(hypnogram)
+                    }
+                });
+            }
+            
+            return sampleRecordings;
+        }
+
+        function generateRealisticHypnogram() {
+            const hypnogram = [];
+            let currentTime = 0;
+            const epochDuration = 30; 
+            const totalMinutes = 480;
+            
+            addEpochs(hypnogram, 'Wake', 4, currentTime, epochDuration);
+            currentTime += 4 * epochDuration;
+            
+            addEpochs(hypnogram, 'N1', 3, currentTime, epochDuration);
+            currentTime += 3 * epochDuration;
+            
+            addEpochs(hypnogram, 'N2', 25, currentTime, epochDuration);
+            currentTime += 25 * epochDuration;
+            
+            addEpochs(hypnogram, 'N3', 40, currentTime, epochDuration);
+            currentTime += 40 * epochDuration;
+            
+            while (currentTime < totalMinutes * 60) {
+                const remaining = (totalMinutes * 60 - currentTime) / 60;
+                
+                if (remaining > 120) {
+                    addEpochs(hypnogram, 'REM', 25, currentTime, epochDuration);
+                    currentTime += 25 * epochDuration;
+                    
+                    addEpochs(hypnogram, 'N2', 45, currentTime, epochDuration);
+                    currentTime += 45 * epochDuration;
+                    
+                    if (Math.random() > 0.5) {
+                        addEpochs(hypnogram, 'N3', 15, currentTime, epochDuration);
+                        currentTime += 15 * epochDuration;
+                    }
+                    
+                    if (Math.random() > 0.8) {
+                        addEpochs(hypnogram, 'Wake', 1, currentTime, epochDuration);
+                        currentTime += 1 * epochDuration;
+                    }
+                } else {
+                    const lightSleepTime = Math.floor(remaining * 0.7);
+                    const wakeTime = remaining - lightSleepTime;
+                    
+                    addEpochs(hypnogram, 'N2', lightSleepTime, currentTime, epochDuration);
+                    currentTime += lightSleepTime * 60;
+                    
+                    addEpochs(hypnogram, 'Wake', wakeTime, currentTime, epochDuration);
+                    break;
+                }
+            }
+            
+            return hypnogram;
+        }
+
+        function addEpochs(hypnogram, stage, count, startTime, epochDuration) {
+            for (let i = 0; i < count; i++) {
+                hypnogram.push({
+                    epoch: hypnogram.length,
+                    onset_seconds: startTime + (i * epochDuration),
+                    duration_seconds: epochDuration,
+                    onset_minutes: (startTime + (i * epochDuration)) / 60,
+                    onset_hours: (startTime + (i * epochDuration)) / 3600,
+                    stage: stage,
+                    stage_numeric: getStageNumeric(stage)
+                });
+            }
+        }
+
+        function getStageNumeric(stage) {
+            const mapping = {
+                'Wake': 5,
+                'REM': 4,
+                'N1': 3,
+                'N2': 2,
+                'N3': 1,
+                'N4': 0,
+                'Movement': 6,
+                'Unknown': -1
+            };
+            return mapping[stage] || -1;
+        }
+
+        function calculateSleepStats(hypnogram) {
+            if (!hypnogram || hypnogram.length === 0) {
+                return {
+                    sleep_efficiency: 0,
+                    rem_percentage: 0,
+                    deep_sleep_percentage: 0,
+                    total_sleep_time_hours: 0,
+                    stage_percentages: {}
+                };
+            }
+            
+            const totalEpochs = hypnogram.length;
+            const stageCounts = {};
+            
+            hypnogram.forEach(epoch => {
+                const stage = epoch.stage || 'Unknown';
+                stageCounts[stage] = (stageCounts[stage] || 0) + 1;
+            });
+            
+            console.log('Stage counts:', stageCounts);
+            
+            const sleepEpochs = totalEpochs - (stageCounts['Wake'] || 0);
+            const sleepEfficiency = totalEpochs > 0 ? (sleepEpochs / totalEpochs) * 100 : 0;
+            const remPercentage = totalEpochs > 0 ? ((stageCounts['REM'] || 0) / totalEpochs) * 100 : 0;
+            
+            const n3Count = (stageCounts['N3'] || 0) + (stageCounts['3'] || 0);
+            const n4Count = (stageCounts['N4'] || 0) + (stageCounts['4'] || 0);
+            const deepSleepPercentage = totalEpochs > 0 ? ((n3Count + n4Count) / totalEpochs) * 100 : 0;
+            
+            const epochDuration = hypnogram[0]?.duration_seconds || 1;
+            const totalSleepTimeHours = (sleepEpochs * epochDuration) / 3600;
+            
+            const stats = {
+                sleep_efficiency: sleepEfficiency,
+                rem_percentage: remPercentage,
+                deep_sleep_percentage: deepSleepPercentage,
+                total_sleep_time_hours: totalSleepTimeHours,
+                stage_percentages: Object.keys(stageCounts).reduce((acc, stage) => {
+                    acc[stage] = totalEpochs > 0 ? (stageCounts[stage] / totalEpochs) * 100 : 0;
+                    return acc;
+                }, {})
+            };
+            
+            console.log('Calculated stats:', stats);
+            return stats;
+        }
+
+        function populateControls() {
+            const subjectSelect = document.getElementById('subject-select');
+            
+            while (subjectSelect.children.length > 1) {
+                subjectSelect.removeChild(subjectSelect.lastChild);
+            }
+            
+            const subjects = [...new Set(sleepData.map(d => d.subject_id))].sort();
+            subjects.forEach(subjectId => {
+                const option = document.createElement('option');
+                option.value = subjectId;
+                option.textContent = `Subject ${subjectId}`;
+                subjectSelect.appendChild(option);
+            });
+        }
+
+        function updateVisualization() {
+            const filters = getFilters();
+            const filteredData = applyFilters(sleepData, filters);
+            
+            if (filteredData.length === 0) {
+                console.log('No data matches current filters');
+                return;
+            }
+            
+            currentData = selectDataToDisplay(filteredData, filters);
+            
+            if (currentData && currentData.data.hypnogram) {
+                createHypnogram(currentData.data.hypnogram);
+                updateStatistics(currentData.data.summary_stats);
+            }
+        }
+
+        function getFilters() {
+            return {
+                subject: document.getElementById('subject-select').value,
+                timeScale: document.getElementById('time-scale').value
+            };
+        }
+
+        function applyFilters(data, filters) {
+            return data.filter(recording => {
+                if (filters.subject !== 'random' && recording.subject_id.toString() !== filters.subject) {
+                    return false;
+                }
+                
+                return true;
+            });
+        }
+
+        function selectDataToDisplay(filteredData, filters) {
+            if (filters.subject === 'random') {
+                return filteredData[Math.floor(Math.random() * filteredData.length)];
+            } else {
+                return filteredData.find(d => d.subject_id.toString() === filters.subject) || filteredData[0];
+            }
+        }
+
+        function createHypnogram(hypnogramData) {
+            const container = d3.select('#hypnogram-chart');
+            container.selectAll('*').remove();
+            
+            if (!hypnogramData || hypnogramData.length === 0) {
+                container.append('p').text('No hypnogram data available');
+                return;
+            }
+            
+            console.log(`Creating hypnogram with ${hypnogramData.length} epochs`);
+            console.log('First few epochs:', hypnogramData.slice(0, 5));
+            
+            const containerWidth = container.node().getBoundingClientRect().width;
+            const margin = {top: 20, right: 30, bottom: 60, left: 80};
+            const width = Math.min(containerWidth - margin.left - margin.right, 900);
+            const height = 350 - margin.top - margin.bottom;
+            
+            const svg = container.append('svg')
+                .attr('width', width + margin.left + margin.right)
+                .attr('height', height + margin.top + margin.bottom);
+            
+            const g = svg.append('g')
+                .attr('transform', `translate(${margin.left},${margin.top})`);
+            
+            const timeScale = document.getElementById('time-scale').value;
+            const maxTime = d3.max(hypnogramData, d => {
+                if (timeScale === 'hours') {
+                    return d.onset_hours || (d.onset_seconds / 3600);
+                } else {
+                    return d.onset_minutes || (d.onset_seconds / 60);
+                }
+            });
+            
+            console.log(`Time scale: ${timeScale}, Max time: ${maxTime}`);
+            
+            const xScale = d3.scaleLinear()
+                .domain([0, maxTime])
+                .range([0, width]);
+            
+            const uniqueStages = [...new Set(hypnogramData.map(d => d.stage))];
+            console.log('Unique stages found:', uniqueStages);
+            
+            const allStages = ['Wake', 'REM', 'N1', 'N2', 'N3', 'N4'];
+            const stages = allStages.filter(stage => uniqueStages.includes(stage));
+            
+            const yScale = d3.scaleBand()
+                .domain(stages)
+                .range([0, height])
+                .padding(0.1);
+            
+            const groupedData = groupConsecutiveStages(hypnogramData);
+            console.log(`Grouped into ${groupedData.length} segments`);
+            
+            g.selectAll('.sleep-rect')
+                .data(groupedData)
+                .enter().append('rect')
+                .attr('class', 'sleep-rect')
+                .attr('x', d => {
+                    const start = timeScale === 'hours' ? 
+                        (d.start_hours || d.start_seconds / 3600) : 
+                        (d.start_minutes || d.start_seconds / 60);
+                    return xScale(start);
+                })
+                .attr('y', d => yScale(d.stage))
+                .attr('width', d => {
+                    const start = timeScale === 'hours' ? 
+                        (d.start_hours || d.start_seconds / 3600) : 
+                        (d.start_minutes || d.start_seconds / 60);
+                    const end = timeScale === 'hours' ? 
+                        (d.end_hours || d.end_seconds / 3600) : 
+                        (d.end_minutes || d.end_seconds / 60);
+                    return Math.max(1, xScale(end) - xScale(start)); 
+                })
+                .attr('height', yScale.bandwidth())
+                .attr('fill', d => stageColors[d.stage] || '#95a5a6')
+                .attr('opacity', 0.8)
+                .attr('stroke', 'white')
+                .attr('stroke-width', 1)
+                .on('mouseover', function(event, d) {
+                    d3.select(this).attr('opacity', 1);
+                    showTooltip(event, d, timeScale);
+                })
+                .on('mouseout', function(event, d) {
+                    d3.select(this).attr('opacity', 0.8);
+                    hideTooltip();
+                })
+                .on('click', function(event, d) {
+                    highlightStage(d.stage);
+                });
+            
+            const xAxis = d3.axisBottom(xScale)
+                .tickFormat(d => timeScale === 'hours' ? `${d.toFixed(1)}h` : `${Math.floor(d)}m`);
+            
+            g.append('g')
+                .attr('transform', `translate(0,${height})`)
+                .call(xAxis)
+                .append('text')
+                .attr('class', 'axis-label')
+                .attr('x', width / 2)
+                .attr('y', 40)
+                .attr('text-anchor', 'middle')
+                .text(`Time (${timeScale})`);
+            
+            const yAxis = d3.axisLeft(yScale);
+            
+            g.append('g')
+                .call(yAxis)
+                .append('text')
+                .attr('class', 'axis-label')
+                .attr('transform', 'rotate(-90)')
+                .attr('x', -height / 2)
+                .attr('y', -50)
+                .attr('text-anchor', 'middle')
+                .text('Sleep Stage');
+        }
+
+        function groupConsecutiveStages(hypnogramData) {
+            if (!hypnogramData || hypnogramData.length === 0) return [];
+            
+            const grouped = [];
+            let currentGroup = {
+                stage: hypnogramData[0].stage,
+                start_seconds: hypnogramData[0].onset_seconds,
+                start_minutes: hypnogramData[0].onset_minutes,
+                start_hours: hypnogramData[0].onset_hours,
+                duration_seconds: hypnogramData[0].duration_seconds,
+                epochs: [hypnogramData[0]]
+            };
+            
+            for (let i = 1; i < hypnogramData.length; i++) {
+                const epoch = hypnogramData[i];
+                
+                if (epoch.stage === currentGroup.stage) {
+                    currentGroup.duration_seconds += epoch.duration_seconds;
+                    currentGroup.epochs.push(epoch);
+                } else {
+                    currentGroup.end_seconds = currentGroup.start_seconds + currentGroup.duration_seconds;
+                    currentGroup.end_minutes = currentGroup.end_seconds / 60;
+                    currentGroup.end_hours = currentGroup.end_seconds / 3600;
+                    currentGroup.duration_minutes = currentGroup.duration_seconds / 60;
+                    
+                    grouped.push(currentGroup);
+                    
+                    currentGroup = {
+                        stage: epoch.stage,
+                        start_seconds: epoch.onset_seconds,
+                        start_minutes: epoch.onset_minutes,
+                        start_hours: epoch.onset_hours,
+                        duration_seconds: epoch.duration_seconds,
+                        epochs: [epoch]
+                    };
+                }
+            }
+            
+            currentGroup.end_seconds = currentGroup.start_seconds + currentGroup.duration_seconds;
+            currentGroup.end_minutes = currentGroup.end_seconds / 60;
+            currentGroup.end_hours = currentGroup.end_seconds / 3600;
+            currentGroup.duration_minutes = currentGroup.duration_seconds / 60;
+            
+            grouped.push(currentGroup);
+            
+            return grouped;
+        }
+
+        function showTooltip(event, d, timeScale) {
+            const tooltip = d3.select('#tooltip');
+            const duration = timeScale === 'hours' ? 
+                `${d.duration_minutes.toFixed(1)} minutes` : 
+                `${Math.floor(d.duration_minutes)} min ${Math.floor((d.duration_minutes % 1) * 60)} sec`;
+            
+            const startTime = timeScale === 'hours' ? 
+                `${d.start_hours.toFixed(2)}h` : 
+                `${Math.floor(d.start_minutes)}:${String(Math.floor((d.start_minutes % 1) * 60)).padStart(2, '0')}`;
+            
+            tooltip.style('opacity', 1)
+                .html(`
+                    <strong>${d.stage}</strong><br/>
+                    Start: ${startTime}<br/>
+                    Duration: ${duration}<br/>
+                    Epochs: ${d.epochs.length}
+                `)
+                .style('left', (event.pageX + 10) + 'px')
+                .style('top', (event.pageY - 10) + 'px');
+        }
+
+        function hideTooltip() {
+            d3.select('#tooltip').style('opacity', 0);
+        }
+
+        function highlightStage(selectedStage) {
+            d3.selectAll('.sleep-rect')
+                .transition()
+                .duration(300)
+                .attr('opacity', d => d.stage === selectedStage ? 1 : 0.3)
+                .attr('stroke-width', d => d.stage === selectedStage ? 3 : 1);
+            
+            setTimeout(() => {
+                d3.selectAll('.sleep-rect')
+                    .transition()
+                    .duration(300)
+                    .attr('opacity', 0.8)
+                    .attr('stroke-width', 1);
+            }, 2000);
+        }
+
+        function updateStatistics(stats) {
+            const statsContainer = d3.select('#sleep-stats');
+            statsContainer.selectAll('*').remove();
+            
+            if (!stats) {
+                console.log('No stats available');
+                return;
+            }
+            
+            console.log('Stats received:', stats);
+            
+            function safeFormat(value, defaultValue = 0, decimals = 1) {
+                if (value === null || value === undefined || isNaN(value)) {
+                    return defaultValue.toFixed(decimals);
+                }
+                return value.toFixed(decimals);
+            }
+            
+            const statCards = [
+                {
+                    value: `${safeFormat(stats.sleep_efficiency)}%`,
+                    label: 'Sleep Efficiency',
+                    description: 'Percentage of time in bed spent asleep'
+                },
+                {
+                    value: `${safeFormat(stats.rem_percentage)}%`,
+                    label: 'REM Sleep',
+                    description: 'Percentage of sleep time in REM stage'
+                },
+                {
+                    value: `${safeFormat(stats.deep_sleep_percentage)}%`,
+                    label: 'Deep Sleep',
+                    description: 'Percentage of sleep time in N3/N4 stages'
+                },
+                {
+                    value: `${safeFormat(stats.total_sleep_time_hours)}h`,
+                    label: 'Total Sleep Time',
+                    description: 'Total time spent in sleep stages'
+                }
+            ];
+            
+            const cards = statsContainer.selectAll('.stat-card')
+                .data(statCards)
+                .enter()
+                .append('div')
+                .attr('class', 'stat-card')
+                .style('opacity', 0);
+            
+            cards.append('div')
+                .attr('class', 'stat-value')
+                .text(d => d.value);
+            
+            cards.append('div')
+                .attr('class', 'stat-label')
+                .text(d => d.label);
+            
+            cards.on('mouseover', function(event, d) {
+                showTooltip(event, {stage: d.label, duration_minutes: 0}, 'hours');
+                d3.select('#tooltip').html(`
+                    <strong>${d.label}</strong><br/>
+                    ${d.description}<br/>
+                    Value: ${d.value}
+                `);
+            })
+            .on('mouseout', hideTooltip);
+            
+            cards.transition()
+                .duration(500)
+                .delay((d, i) => i * 100)
+                .style('opacity', 1);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            switch(event.key) {
+                case 'r':
+                    document.getElementById('subject-select').value = 'random';
+                    updateVisualization();
+                    break;
+                case 't':
+                    const timeScale = document.getElementById('time-scale');
+                    timeScale.value = timeScale.value === 'hours' ? 'minutes' : 'hours';
+                    updateVisualization();
+                    break;
+            }
+        });
+        window.addEventListener('resize', function() {
+            if (currentData && currentData.data.hypnogram) {
+                clearTimeout(window.resizeTimeout);
+                window.resizeTimeout = setTimeout(function() {
+                    createHypnogram(currentData.data.hypnogram);
+                }, 250);
+            }
+        });
+    </script>
+</body>
+</html>
