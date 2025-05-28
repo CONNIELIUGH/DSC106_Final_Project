@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "filename": "ST7132JR-Hypnogram.edf",
+    "subject_id": "71",
+    "night_id": "2",
+    "condition": "3",
+    "study_type": "Sleep Telemetry",
+    "subject_info": {
+      "age": null,
+      "gender": null
+    },
+    "recording_info": {
+      "duration_hours": 0,
+      "total_epochs": 0,
+      "start_time": "1994-08-08 00:31:00+00:00",
+      "sampling_rate": 1476.0
+    }
+  },
+  "hypnogram": [],
+  "summary_stats": {}
+}
