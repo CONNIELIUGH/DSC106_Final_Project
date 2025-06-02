@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "filename": "ST7201JO-Hypnogram.edf",
+    "subject_id": "20",
+    "night_id": "1",
+    "condition": "temazepam",
+    "condition_code": "J",
+    "subject_info": {
+      "age": null,
+      "gender": null
+    },
+    "study_type": "Sleep Telemetry",
+    "recording_info": {
+      "duration_hours": 0,
+      "total_epochs": 0,
+      "start_time": "1994-08-24T23:45:00+00:00",
+      "sampling_rate": 1748.0,
+      "epoch_length_seconds": 30
+    }
+  },
+  "hypnogram": [],
+  "summary_stats": {
+    "sleep_efficiency": 0.0,
+    "rem_percentage": 0.0,
+    "deep_sleep_percentage": 0.0,
+    "light_sleep_percentage": 0.0,
+    "wake_percentage": 100.0,
+    "stage_percentages": {},
+    "sleep_onset_minutes": null,
+    "rem_onset_minutes": null,
+    "total_sleep_time_hours": 0.0,
+    "wake_after_sleep_onset_minutes": 0.0
+  }
+}

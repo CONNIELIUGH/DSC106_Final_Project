@@ -1,0 +1,1597 @@
+[
+  {
+    "metadata": {
+      "filename": "ST7152JA-Hypnogram.edf",
+      "subject_id": "15",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 66,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-08-29T23:32:30+00:00",
+        "sampling_rate": 2118.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7071JA-Hypnogram.edf",
+      "subject_id": "07",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 51,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-07-25T00:01:30+00:00",
+        "sampling_rate": 1769.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7081JW-Hypnogram.edf",
+      "subject_id": "08",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 66,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-07-25T23:53:00+00:00",
+        "sampling_rate": 2039.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7042JO-Hypnogram.edf",
+      "subject_id": "04",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 18,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-07-27T22:31:30+00:00",
+        "sampling_rate": 1743.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7052JA-Hypnogram.edf",
+      "subject_id": "05",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 32,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-07-22T23:23:00+00:00",
+        "sampling_rate": 1485.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7221JA-Hypnogram.edf",
+      "subject_id": "22",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 56,
+        "gender": "M",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-08-16T23:21:00+00:00",
+        "sampling_rate": 1764.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7171JA-Hypnogram.edf",
+      "subject_id": "17",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 48,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-09-15T23:39:30+00:00",
+        "sampling_rate": 2460.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7112JE-Hypnogram.edf",
+      "subject_id": "11",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 21,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-09-09T23:50:00+00:00",
+        "sampling_rate": 1439.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7192JR-Hypnogram.edf",
+      "subject_id": "19",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 28,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-09-08T23:22:00+00:00",
+        "sampling_rate": 1079.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7062JR-Hypnogram.edf",
+      "subject_id": "06",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 35,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-07-22T23:24:00+00:00",
+        "sampling_rate": 1176.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7142JE-Hypnogram.edf",
+      "subject_id": "14",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 20,
+        "gender": "M",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-09-05T00:51:30+00:00",
+        "sampling_rate": 1162.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7121JE-Hypnogram.edf",
+      "subject_id": "12",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 21,
+        "gender": "M",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-09-02T23:41:30+00:00",
+        "sampling_rate": 2170.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7242JO-Hypnogram.edf",
+      "subject_id": "24",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 48,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-09-15T23:35:00+00:00",
+        "sampling_rate": 1837.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7211JJ-Hypnogram.edf",
+      "subject_id": "21",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 34,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-08-19T23:06:00+00:00",
+        "sampling_rate": 2115.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7202JO-Hypnogram.edf",
+      "subject_id": "20",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 24,
+        "gender": "M",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-08-31T23:57:30+00:00",
+        "sampling_rate": 1549.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7132JR-Hypnogram.edf",
+      "subject_id": "13",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 22,
+        "gender": "M",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-08-08T00:31:00+00:00",
+        "sampling_rate": 1476.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7091JE-Hypnogram.edf",
+      "subject_id": "09",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 47,
+        "gender": "M",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-08-08T23:42:00+00:00",
+        "sampling_rate": 1703.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7182JR-Hypnogram.edf",
+      "subject_id": "18",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 53,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-09-01T23:04:30+00:00",
+        "sampling_rate": 1373.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7102JE-Hypnogram.edf",
+      "subject_id": "10",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 20,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-08-17T23:28:00+00:00",
+        "sampling_rate": 1295.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7162JM-Hypnogram.edf",
+      "subject_id": "16",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 79,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-08-17T23:21:30+00:00",
+        "sampling_rate": 2286.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7222JA-Hypnogram.edf",
+      "subject_id": "22",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 56,
+        "gender": "M",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-08-24T23:42:30+00:00",
+        "sampling_rate": 1671.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7051JA-Hypnogram.edf",
+      "subject_id": "05",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 32,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-07-15T23:34:00+00:00",
+        "sampling_rate": 2340.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7061JR-Hypnogram.edf",
+      "subject_id": "06",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 35,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-07-15T23:27:00+00:00",
+        "sampling_rate": 1055.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7111JE-Hypnogram.edf",
+      "subject_id": "11",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 21,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-09-02T23:38:00+00:00",
+        "sampling_rate": 1057.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7172JA-Hypnogram.edf",
+      "subject_id": "17",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 48,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-09-22T23:46:30+00:00",
+        "sampling_rate": 2537.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7191JR-Hypnogram.edf",
+      "subject_id": "19",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 28,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-09-01T23:07:30+00:00",
+        "sampling_rate": 1867.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7011JP-Hypnogram.edf",
+      "subject_id": "01",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 60,
+        "gender": "M",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-07-12T23:00:00+00:00",
+        "sampling_rate": 2922.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7151JA-Hypnogram.edf",
+      "subject_id": "15",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 66,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-08-22T21:48:00+00:00",
+        "sampling_rate": 2284.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7082JW-Hypnogram.edf",
+      "subject_id": "08",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 66,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-09-12T23:20:00+00:00",
+        "sampling_rate": 1652.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7072JA-Hypnogram.edf",
+      "subject_id": "07",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 51,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-09-12T23:23:30+00:00",
+        "sampling_rate": 2013.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7131JR-Hypnogram.edf",
+      "subject_id": "13",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 22,
+        "gender": "M",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-08-01T00:37:30+00:00",
+        "sampling_rate": 1140.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7201JO-Hypnogram.edf",
+      "subject_id": "20",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 24,
+        "gender": "M",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-08-24T23:45:00+00:00",
+        "sampling_rate": 1748.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7212JJ-Hypnogram.edf",
+      "subject_id": "21",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 34,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-09-07T23:43:00+00:00",
+        "sampling_rate": 1807.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7181JR-Hypnogram.edf",
+      "subject_id": "18",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 53,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-08-12T23:24:00+00:00",
+        "sampling_rate": 1286.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7101JE-Hypnogram.edf",
+      "subject_id": "10",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 20,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-08-10T23:20:30+00:00",
+        "sampling_rate": 2039.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7161JM-Hypnogram.edf",
+      "subject_id": "16",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 79,
+        "gender": "F",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-08-10T23:15:30+00:00",
+        "sampling_rate": 1895.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7092JE-Hypnogram.edf",
+      "subject_id": "09",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 47,
+        "gender": "M",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-08-22T00:29:30+00:00",
+        "sampling_rate": 2410.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7122JE-Hypnogram.edf",
+      "subject_id": "12",
+      "night_id": "2",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 21,
+        "gender": "M",
+        "condition_verified": "temazepam"
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0.0002777777777777778,
+        "total_epochs": 1,
+        "start_time": "1994-09-09T23:55:30+00:00",
+        "sampling_rate": 1258.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [
+      {
+        "epoch": 0,
+        "onset_seconds": 0.0,
+        "duration_seconds": 1.0,
+        "onset_minutes": 0.0,
+        "onset_hours": 0.0,
+        "stage": "Wake",
+        "stage_numeric": 0,
+        "raw_description": "Sleep stage W"
+      }
+    ],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {
+        "Wake": 100.0
+      },
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7141JE-Hypnogram.edf",
+      "subject_id": "14",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 20,
+        "gender": "M",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-08-01T00:39:00+00:00",
+        "sampling_rate": 1613.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  },
+  {
+    "metadata": {
+      "filename": "ST7241JO-Hypnogram.edf",
+      "subject_id": "24",
+      "night_id": "1",
+      "condition": "temazepam",
+      "condition_code": "J",
+      "subject_info": {
+        "age": 48,
+        "gender": "F",
+        "condition_verified": null
+      },
+      "study_type": "Sleep Telemetry",
+      "recording_info": {
+        "duration_hours": 0,
+        "total_epochs": 0,
+        "start_time": "1994-09-08T23:26:30+00:00",
+        "sampling_rate": 1291.0,
+        "epoch_length_seconds": 30
+      }
+    },
+    "hypnogram": [],
+    "summary_stats": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "wake_percentage": 100.0,
+      "stage_percentages": {},
+      "sleep_onset_minutes": null,
+      "rem_onset_minutes": null,
+      "total_sleep_time_hours": 0.0,
+      "wake_after_sleep_onset_minutes": 0.0
+    }
+  }
+]

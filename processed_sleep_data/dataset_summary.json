@@ -1,0 +1,23 @@
+{
+  "total_subjects": 0,
+  "total_recordings": 40,
+  "conditions": {
+    "temazepam": 40
+  },
+  "age_distribution": [],
+  "gender_distribution": {},
+  "sleep_stats_by_condition": {
+    "temazepam": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "total_sleep_time_hours": 0.0,
+      "stage_percentages": {
+        "Wake": 37.5
+      }
+    }
+  },
+  "sleep_stats_by_age_group": {},
+  "sleep_stats_by_gender": {}
+}

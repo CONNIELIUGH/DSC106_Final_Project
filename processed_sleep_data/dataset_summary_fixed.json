@@ -1,0 +1,129 @@
+{
+  "total_subjects": 17,
+  "total_recordings": 40,
+  "conditions": {
+    "temazepam": 40
+  },
+  "age_distribution": [
+    66,
+    51,
+    66,
+    18,
+    32,
+    56,
+    48,
+    21,
+    28,
+    35,
+    20,
+    21,
+    48,
+    34,
+    24,
+    22,
+    47,
+    53,
+    20,
+    79,
+    56,
+    32,
+    35,
+    21,
+    48,
+    28,
+    60,
+    66,
+    66,
+    51,
+    22,
+    24,
+    34,
+    53,
+    20,
+    79,
+    47,
+    21,
+    20,
+    48
+  ],
+  "gender_distribution": {
+    "F": 27,
+    "M": 13
+  },
+  "sleep_stats_by_condition": {
+    "temazepam": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "total_sleep_time_hours": 0.0,
+      "stage_percentages": {
+        "Wake": 37.5
+      }
+    }
+  },
+  "sleep_stats_by_age_group": {
+    "18-30": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "total_sleep_time_hours": 0.0,
+      "stage_percentages": {
+        "Wake": 33.33
+      }
+    },
+    "31-50": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "total_sleep_time_hours": 0.0,
+      "stage_percentages": {
+        "Wake": 25.0
+      }
+    },
+    "51-70": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "total_sleep_time_hours": 0.0,
+      "stage_percentages": {
+        "Wake": 54.55
+      }
+    },
+    "70+": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "total_sleep_time_hours": 0.0,
+      "stage_percentages": {
+        "Wake": 50.0
+      }
+    }
+  },
+  "sleep_stats_by_gender": {
+    "M": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "total_sleep_time_hours": 0.0,
+      "stage_percentages": {
+        "Wake": 46.15
+      }
+    },
+    "F": {
+      "sleep_efficiency": 0.0,
+      "rem_percentage": 0.0,
+      "deep_sleep_percentage": 0.0,
+      "light_sleep_percentage": 0.0,
+      "total_sleep_time_hours": 0.0,
+      "stage_percentages": {
+        "Wake": 33.33
+      }
+    }
+  }
+}
