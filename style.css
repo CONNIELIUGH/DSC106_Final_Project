@@ -9,6 +9,16 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #ffffff;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+:root {
+    --color-accent: oklch(80% 3% 200);
+}
+
+html {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .container {
@@ -17,10 +27,56 @@ body {
     padding: 0 20px;
 }
 
+/* Navigation */
+nav {
+    display: flex;
+    font: 100%/1.5 system-ui;
+    max-width: 100ch;
+    margin-inline: auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: oklch(80% 3% 200);
+    padding-bottom: 0.4em;
+    --color-accent: oklch(80% 3% 200);
+    accent-color: var(--color-accent);
+    --border-color: oklch(50% 10% 200 / 40%);
+    border-bottom-color: var(--border-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+nav ul {
+    display: contents;
+}
+
+nav li {
+    display: contents;
+}
+
+nav a {
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    padding: 0.5em;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+nav a:hover {
+    border-bottom: 0.4em solid var(--color-accent);
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+}
+
+nav a.current {
+    border-bottom: 0.4em solid oklch(80% 3% 200);
+    padding-bottom: 0.1em;
+}
+
 /* Header */
 .header {
     text-align: center;
-    padding: 40px 0;
+    padding: 60px 0;
     border-bottom: 1px solid #e0e0e0;
     margin-bottom: 40px;
 }
@@ -37,7 +93,15 @@ body {
     font-size: 1.1rem;
     color: #7f8c8d;
     font-weight: 400;
+    margin-bottom: 10px;
 }
+
+.byline {
+    font-size: 1rem;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
 
 /* Main Content Layout */
 .main-content {
@@ -98,7 +162,6 @@ body {
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
-/* Sleep Stages Section */
 .sleep-stages {
     margin-bottom: 30px;
 }

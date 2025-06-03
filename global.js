@@ -8,9 +8,9 @@ const BASE_PATH = location.hostname === "localhost" || location.hostname === "12
 
 const pages = [
   { url: "", title: "Home" },
-  { url: "Data/", title: "Data" },
   { url: "medication_effects/", title: "Medication Effects" },
-  { url: "write_up/", title: "Write-Up" }
+  { url: "write_up/", title: "Write-Up" },
+  { url: "Data/", title: "Data" }
 ];
 
 const nav = document.createElement("nav");
