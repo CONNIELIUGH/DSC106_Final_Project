@@ -648,12 +648,15 @@ class MedicationVisualization {
             };
 
 
-            const participants = Object.values(rawData).map(d => ({
+            const participants = Object.values(rawData)
+            .map(d => ({
                 id: d.subject_id,
-                improvement: d.efficiency_diff,
+                outcome: d.baseline + d.efficiency_diff,
                 age: d.age,
-                baseline: d.baseline // If not applicable, or you can calculate if needed
-            }));
+                baseline: d.baseline,
+                change: d.efficiency_diff
+            }))
+            .sort((a, b) => a.age - b.age);
         
         const g = this.svg.append('g')
             .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
@@ -666,35 +669,36 @@ class MedicationVisualization {
             .range([0, chartWidth]);
         
         const y = d3.scaleLinear()
-            .domain([-10, 20])
+            .domain([59.5, 100])
             .range([chartHeight, 0]);
         
         // Scatter plot
-        g.selectAll('.participant-dot')
+        const circles = g.selectAll('.participant-dot')
             .data(participants)
             .enter()
             .append('circle')
             .attr('class', 'participant-dot')
             .attr('cx', d => x(d.age))
-            .attr('cy', d => y(d.improvement))
+            .attr('cy', d => y(d.baseline))
             .attr('r', 5)
-            .attr('fill', d => d.improvement > 0 ? colors.temazepam : colors.placebo)
+            //.attr('fill', d => d.improvement > 0 ? colors.temazepam : colors.placebo)
+            .attr('fill', '#cccccc')
             .attr('opacity', 0.7)
             .style('cursor', 'pointer')
             .on('mouseenter', (event, d) => {
                 this.showTooltip(event, `Participant ${d.id}`, 
-                    `Age: ${Math.round(d.age)}<br>Improvement: ${d.improvement.toFixed(1)}%<br>Baseline: ${d.baseline.toFixed(1)}%`);
+                    `Age: ${Math.round(d.age)}<br>Improvement: ${Math.round(d.change)}%<br>Baseline: ${Math.round(d.baseline)}%`);
             })
             .on('mouseleave', () => this.hideTooltip());
-        
+                    
         // Zero line
-        g.append('line')
-            .attr('x1', 0)
-            .attr('x2', chartWidth)
-            .attr('y1', y(0))
-            .attr('y2', y(0))
-            .attr('stroke', '#bdc3c7')
-            .attr('stroke-dasharray', '5,5');
+        // g.append('line')
+        //     .attr('x1', 0)
+        //     .attr('x2', chartWidth)
+        //     .attr('y1', y(0))
+        //     .attr('y2', y(0))
+        //     .attr('stroke', '#bdc3c7')
+        //     .attr('stroke-dasharray', '5,5');
         
         // Axes
         g.append('g')
@@ -723,7 +727,45 @@ class MedicationVisualization {
             .style('text-anchor', 'middle')
             .style('font-size', '12px')
             .style('fill', '#7f8c8d')
-            .text('Sleep Efficiency Improvement (%)');
+            .text('Sleep Efficiency');
+        
+        function animateCircles() {
+            circles.transition()
+                .delay((d, i) => 500 + i * 120)
+                .duration(1500)
+                .attr('cx', d => x(d.age))
+                .attr('cy', d => y(d.outcome))
+                .attr('fill', d => d.change > 0 ? colors.temazepam : colors.placebo)
+                .attr('r', d => d.change > 0 ? 7 : 5);
+        }
+        function resetAndAnimate() {
+            // Reset circles to initial state
+            circles
+                .transition()
+                .duration(0)
+                .attr('cx', d => x(d.age))
+                .attr('cy', d => y(d.baseline))
+                .attr('fill', '#cccccc')
+                .attr('r', 5);
+
+            // Animate after a short delay
+            setTimeout(animateCircles, 500);
+        }
+
+        
+        circles
+            .transition()
+            .duration(0)
+            .attr('cx', d => x(d.age))
+            .attr('cy', d => y(d.baseline))
+            .attr('fill', '#cccccc')
+            .attr('r', 5);
+
+        // Animate after a short delay (e.g., 1 second)
+        setTimeout(animateCircles, 1000);
+
+        setTimeout(resetAndAnimate, 15_000)
+
     }
 
     // Step 8: Conclusion
