@@ -765,10 +765,190 @@ class MedicationVisualization {
         setTimeout(animateCircles, 1000);
 
         setTimeout(resetAndAnimate, 15_000)
-
     }
 
-    // Step 8: Conclusion
+    // step 8 change
+    renderChange() {
+        this.svg.selectAll('*').remove();
+
+        const placeboBarColors = [
+            '#e57373', // Wake (%) - strong red
+            '#f8bbbd', // REM (%) - very light red/pink
+            '#fde0dc'  // Stage 3 (%) - even lighter pink
+        ];
+        const temazepamBarColors = [
+            '#42a5f5', // Wake (%) - strong blue
+            '#b3e5fc', // REM (%) - very light blue
+            '#e3f2fd'  // Stage 3 (%) - even lighter blue
+        ];
+
+        const chartWidth = this.width - this.margin.left - this.margin.right;
+        const chartHeight = this.height - this.margin.top - this.margin.bottom;
+
+        // New dataset
+        const dataByCondition = {
+            placebo: {
+                "condition": "placebo",
+                "W_pct": 14.900876,
+                "R_pct": 16.928019,
+                "3_pct": 9.588141
+            },
+            temazepam: {
+                "condition": "temazepam",
+                "W_pct": 9.557670,
+                "R_pct": 18.916013,
+                "3_pct": 11.095658
+            }
+        };
+
+        const metrics = [
+            { key: 'W_pct', label: 'Wake (%)' },
+            { key: 'R_pct', label: 'REM (%)' },
+            { key: '3_pct', label: 'Deep Sleep (%)' }
+        ];
+
+        // Prepare data for bar chart
+        const chartDataPlacebo = metrics.map(m => ({
+            label: m.label,
+            value: dataByCondition.placebo[m.key]
+        }));
+        const chartDataTemazepam = metrics.map(m => ({
+            label: m.label,
+            value: dataByCondition.temazepam[m.key]
+        }));
+
+        // Title
+        this.svg.append('text')
+            .attr('x', this.width / 2)
+            .attr('y', 30)
+            .attr('text-anchor', 'middle')
+            .attr('class', 'chart-title')
+            .text('Sleep Stage Percentages: Placebo → Temazepam');
+
+        const g = this.svg.append('g')
+            .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
+
+        const x = d3.scaleBand()
+            .domain(chartDataPlacebo.map(d => d.label))
+            .range([0, chartWidth])
+            .padding(0.3);
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max([
+                ...metrics.map(m => dataByCondition.placebo[m.key]),
+                ...metrics.map(m => dataByCondition.temazepam[m.key])
+            ]) * 1.1])
+            .range([chartHeight, 0]);
+
+        // Only use numeric values for color scale domains
+        const placeboVals = metrics.map(m => dataByCondition.placebo[m.key]);
+        const temazepamVals = metrics.map(m => dataByCondition.temazepam[m.key]);
+
+        const placeboColorScale = d3.scaleLinear()
+            .domain([d3.min(placeboVals), d3.max(placeboVals)])
+            .range(['#fde0dc', '#e57373']); // light red to strong red
+
+        const temazepamColorScale = d3.scaleLinear()
+            .domain([d3.min(temazepamVals), d3.max(temazepamVals)])
+            .range(['#e3f2fd', '#42a5f5']); // light blue to strong blue
+
+        // Draw placebo bars
+        const bars = g.selectAll('.bar')
+            .data(chartDataPlacebo, d => d.label)
+            .enter()
+            .append('rect')
+            .attr('class', 'bar')
+            .attr('x', d => x(d.label))
+            .attr('width', x.bandwidth())
+            .attr('y', d => y(d.value))
+            .attr('height', d => chartHeight - y(d.value))
+            .attr('fill', d => placeboColorScale(d.value));
+
+        // Value labels
+        const labels = g.selectAll('.bar-label')
+            .data(chartDataPlacebo, d => d.label)
+            .enter()
+            .append('text')
+            .attr('class', 'bar-label')
+            .attr('x', d => x(d.label) + x.bandwidth() / 2)
+            .attr('y', d => y(d.value) - 8)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', '14px')
+            .attr('fill', '#2c3e50')
+            .text(d => d.value.toFixed(2));
+
+        // Axes
+        g.append('g')
+            .attr('class', 'axis')
+            .attr('transform', `translate(0, ${chartHeight})`)
+            .call(d3.axisBottom(x));
+
+        g.append('g')
+            .attr('class', 'axis')
+            .call(d3.axisLeft(y));
+
+        // Y-axis label
+        g.append('text')
+            .attr('transform', 'rotate(-90)')
+            .attr('y', 0 - this.margin.left + 15)
+            .attr('x', 0 - (chartHeight / 2))
+            .attr('dy', '1em')
+            .style('text-anchor', 'middle')
+            .style('font-size', '12px')
+            .style('fill', '#7f8c8d')
+            .text('Percentage (%)');
+
+        // Animation logic
+        function animateTransition() {
+            // Animate to temazepam
+            bars.data(chartDataTemazepam, d => d.label)
+                .transition()
+                .duration(3000)
+                .attr('y', d => y(d.value))
+                .attr('height', d => chartHeight - y(d.value))
+                .attr('fill', d => temazepamColorScale(d.value));
+
+            labels.data(chartDataTemazepam, d => d.label)
+                .transition()
+                .duration(3000)
+                .attr('y', d => y(d.value) - 8)
+                .tween('text', function(d) {
+                    const i = d3.interpolateNumber(+this.textContent, d.value);
+                    return function(t) {
+                        this.textContent = i(t).toFixed(2);
+                    };
+                });
+
+            // After 4 seconds, reset to placebo
+            setTimeout(() => {
+                bars.data(chartDataPlacebo, d => d.label)
+                    .transition()
+                    .duration(1000)
+                    .attr('y', d => y(d.value))
+                    .attr('height', d => chartHeight - y(d.value))
+                    .attr('fill', d => placeboColorScale(d.value));
+
+                labels.data(chartDataPlacebo, d => d.label)
+                    .transition()
+                    .duration(1000)
+                    .attr('y', d => y(d.value) - 8)
+                    .tween('text', function(d) {
+                        const i = d3.interpolateNumber(+this.textContent, d.value);
+                        return function(t) {
+                            this.textContent = i(t).toFixed(2);
+                        };
+                    });
+
+                // After 2s, repeat the animation (total cycle: 3+4+1+2=10s)
+                setTimeout(animateTransition, 3000);
+            }, 5000);
+        }
+
+        // Start the animation after 1 second
+        setTimeout(animateTransition, 2000);
+    }
+
+    // Step 9: Conclusion
     renderConclusion() {
         this.svg.selectAll('*').remove();
         
@@ -876,6 +1056,9 @@ class MedicationVisualization {
                 break;
             case 'individual':
                 this.renderIndividual();
+                break;
+            case 'change':
+                this.renderChange();
                 break;
             case 'conclusion':
                 this.renderConclusion();
