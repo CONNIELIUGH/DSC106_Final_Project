@@ -874,7 +874,7 @@ class MedicationVisualization {
             .attr('y', d => y(d.value) - 8)
             .attr('text-anchor', 'middle')
             .attr('font-size', '14px')
-            .attr('fill', '#2c3e50')
+            .attr('fill', '#fff')
             .text(d => d.value.toFixed(2));
 
         // Axes
