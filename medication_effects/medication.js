@@ -21,6 +21,7 @@ const medicationData = {
     }
 };
 
+
 // Color palette
 const colors = {
     placebo: '#e74c3c',
@@ -625,20 +626,34 @@ class MedicationVisualization {
             .attr('class', 'chart-title')
             .text('Individual Response Variability');
         
-        // Simulate individual participant data
-        const participants = [];
-        for (let i = 1; i <= 22; i++) {
-            const baseImprovement = 7; // Average improvement
-            const variation = (Math.random() - 0.5) * 10; // Random variation
-            const improvement = Math.max(-2, Math.min(15, baseImprovement + variation));
-            
-            participants.push({
-                id: i,
-                improvement: improvement,
-                age: 20 + Math.random() * 50,
-                baseline: 70 + Math.random() * 15
-            });
-        }
+        const rawData = {
+            "0": { "subject_id": 5.0, "age": 32.0, "efficiency_diff": 3.4658544649, "baseline": 89.264990 },
+            "1": { "subject_id": 6.0, "age": 35.0, "efficiency_diff": -0.6010737628, "baseline": 95.138889 },
+            "2": { "subject_id": 7.0, "age": 51.0, "efficiency_diff": 14.0996918326, "baseline": 59.561510 },
+            "3": { "subject_id": 8.0, "age": 66.0, "efficiency_diff": -0.4183156962, "baseline": 83.458647 },
+            "4": { "subject_id": 9.0, "age": 47.0, "efficiency_diff": 6.8222369538, "baseline": 78.331528 },
+            "5": { "subject_id": 10.0, "age": 20.0, "efficiency_diff": 6.9597320694, "baseline": 87.428023 },
+            "6": { "subject_id": 11.0, "age": 21.0, "efficiency_diff": 0.5854461878, "baseline": 94.989775 },
+            "7": { "subject_id": 12.0, "age": 21.0, "efficiency_diff": -2.701197438, "baseline": 93.177388 },
+            "8": { "subject_id": 13.0, "age": 22.0, "efficiency_diff": 4.9467936841, "baseline": 92.957746 },
+            "9": { "subject_id": 14.0, "age": 20.0, "efficiency_diff": 1.0024912087, "baseline": 94.988345 },
+            "10": { "subject_id": 15.0, "age": 66.0, "efficiency_diff": 6.2353512239, "baseline": 88.405797 },
+            "11": { "subject_id": 16.0, "age": 79.0, "efficiency_diff": 4.2605877914, "baseline": 84.008097 },
+            "12": { "subject_id": 17.0, "age": 48.0, "efficiency_diff": 9.4037845466, "baseline": 76.580311 },
+            "13": { "subject_id": 18.0, "age": 53.0, "efficiency_diff": -6.5047506182, "baseline": 95.243020 },
+            "14": { "subject_id": 19.0, "age": 28.0, "efficiency_diff": -5.1789158761, "baseline": 97.744361 },
+            "15": { "subject_id": 20.0, "age": 24.0, "efficiency_diff": -0.4947122794, "baseline": 98.156182 },
+            "16": { "subject_id": 21.0, "age": 34.0, "efficiency_diff": -0.6237531831, "baseline": 84.653465 },
+            "17": { "subject_id": 22.0, "age": 56.0, "efficiency_diff": 5.6796585446, "baseline": 85.382381 }
+            };
+
+
+            const participants = Object.values(rawData).map(d => ({
+                id: d.subject_id,
+                improvement: d.efficiency_diff,
+                age: d.age,
+                baseline: d.baseline // If not applicable, or you can calculate if needed
+            }));
         
         const g = this.svg.append('g')
             .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
@@ -647,11 +662,11 @@ class MedicationVisualization {
         const chartHeight = this.height - this.margin.top - this.margin.bottom;
         
         const x = d3.scaleLinear()
-            .domain([20, 70])
+            .domain([18, 70])
             .range([0, chartWidth]);
         
         const y = d3.scaleLinear()
-            .domain([-5, 20])
+            .domain([-10, 20])
             .range([chartHeight, 0]);
         
         // Scatter plot
