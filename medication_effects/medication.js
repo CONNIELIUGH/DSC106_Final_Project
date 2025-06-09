@@ -30,21 +30,25 @@ const colors = {
     light: '#87ceeb',
     deep: '#2c3e50',
     rem: '#9b59b6',
-    background: '#f8f9fa'
+    background: '#f8f9fa',
+    title: "#ffffff",
+    subtitle: "#bdbfbf"
 };
 
 // Main visualization class
 class MedicationVisualization {
     constructor() {
+        this.containerInfo = document.getElementById("chart-container");
         this.container = d3.select('#main-visualization');
-        this.width = 600;
-        this.height = 500;
+        this.width = this.containerInfo.clientWidth;
+        this.height = this.containerInfo.clientHeight || this.width * 0.6;
         this.margin = { top: 40, right: 40, bottom: 60, left: 60 };
         
         this.svg = this.container
             .append('svg')
-            .attr('width', this.width)
-            .attr('height', this.height);
+            .attr("viewBox", [0,0, this.width, this.height])
+            .attr("preserveAspectRation", "xMidYmid meet")
+            .classed("responsive-svg", true);
         
         this.tooltip = this.createTooltip();
         this.currentStep = 'setup';
@@ -89,12 +93,13 @@ class MedicationVisualization {
             .attr('y', 40)
             .attr('text-anchor', 'middle')
             .attr('class', 'chart-title')
+            .attr('fill', colors.title)
             .text('Clinical Trial Design');
         
         // Two groups representing placebo vs temazepam
         const groupData = [
-            { label: 'Placebo Night', x: centerX - 120, color: colors.placebo },
-            { label: 'Temazepam Night', x: centerX + 120, color: colors.temazepam }
+            { label: 'Placebo Night', x: centerX - 125, color: colors.placebo },
+            { label: 'Temazepam Night', x: centerX + 125, color: colors.temazepam }
         ];
         
         const groups = this.svg.selectAll('.study-group')
@@ -131,7 +136,7 @@ class MedicationVisualization {
             .attr('x', centerX)
             .attr('y', centerY + 150)
             .attr('text-anchor', 'middle')
-            .attr('fill', '#7f8c8d')
+            .attr('fill', colors.subtitle)
             .attr('font-size', '16px')
             .text('22 participants • Crossover design • Polysomnography monitoring');
     }
@@ -154,6 +159,7 @@ class MedicationVisualization {
             .attr('y', 30)
             .attr('text-anchor', 'middle')
             .attr('class', 'chart-title')
+            .attr('fill', colors.title)
             .text('Sleep Efficiency Comparison');
         
         const g = this.svg.append('g')
@@ -202,6 +208,7 @@ class MedicationVisualization {
             .attr('text-anchor', 'middle')
             .attr('font-weight', 'bold')
             .attr('font-size', '18px')
+            .style('fill', colors.title)
             .text(d => `${d.value}%`);
         
         // Axes
@@ -222,7 +229,7 @@ class MedicationVisualization {
             .attr('dy', '1em')
             .style('text-anchor', 'middle')
             .style('font-size', '12px')
-            .style('fill', '#7f8c8d')
+            .style('fill', colors.subtitle)
             .text('Sleep Efficiency (%)');
     }
 
@@ -240,6 +247,7 @@ class MedicationVisualization {
             .attr('y', 40)
             .attr('text-anchor', 'middle')
             .attr('class', 'chart-title')
+            .style('fill', colors.title)
             .text('Wake Time Reduction');
         
         // Create pie charts for placebo and temazepam
@@ -248,7 +256,7 @@ class MedicationVisualization {
                 label: 'Placebo',
                 data: [
                     { stage: 'Awake', value: medicationData.placebo.wake_percentage, color: colors.wake },
-                    { stage: 'Asleep', value: 100 - medicationData.placebo.wake_percentage, color: '#95a5a6' }
+                    { stage: 'Asleep', value: 100 - medicationData.placebo.wake_percentage, color: colors.subtitle }
                 ],
                 x: centerX - 150
             },
@@ -256,14 +264,14 @@ class MedicationVisualization {
                 label: 'Temazepam',
                 data: [
                     { stage: 'Awake', value: medicationData.temazepam.wake_percentage, color: colors.wake },
-                    { stage: 'Asleep', value: 100 - medicationData.temazepam.wake_percentage, color: colors.temazepam }
+                    { stage: 'Asleep', value: 100 - medicationData.temazepam.wake_percentage, color: colors.subtitle }
                 ],
                 x: centerX + 150
             }
         ];
         
         const pie = d3.pie().value(d => d.value).sort(null);
-        const arc = d3.arc().innerRadius(40).outerRadius(radius);
+        const arc = d3.arc().innerRadius(50).outerRadius(radius);
         
         pieData.forEach(chart => {
             const g = this.svg.append('g')
@@ -287,15 +295,16 @@ class MedicationVisualization {
             // Center label
             g.append('text')
                 .attr('text-anchor', 'middle')
-                .attr('dy', '0.35em')
+                .attr('dy', '-1em')
                 .attr('font-weight', 'bold')
                 .attr('font-size', '14px')
+                .style('fill', colors.title)
                 .text(chart.label);
             
             // Wake percentage
             g.append('text')
                 .attr('text-anchor', 'middle')
-                .attr('dy', '1.5em')
+                .attr('dy', '0.5em')
                 .attr('font-size', '18px')
                 .attr('fill', colors.wake)
                 .attr('font-weight', 'bold')
@@ -303,9 +312,9 @@ class MedicationVisualization {
             
             g.append('text')
                 .attr('text-anchor', 'middle')
-                .attr('dy', '2.7em')
+                .attr('dy', '2.0em')
                 .attr('font-size', '12px')
-                .attr('fill', '#7f8c8d')
+                .attr('fill', colors.subtitle)
                 .text('awake');
         });
         
@@ -316,7 +325,7 @@ class MedicationVisualization {
             .attr('y', centerY + radius + 60)
             .attr('text-anchor', 'middle')
             .attr('font-size', '16px')
-            .attr('fill', colors.temazepam)
+            .attr('fill', colors.wake)
             .attr('font-weight', 'bold')
             .text(`${improvement}% reduction in wake time`);
     }
@@ -334,6 +343,7 @@ class MedicationVisualization {
             .attr('y', 30)
             .attr('text-anchor', 'middle')
             .attr('class', 'chart-title')
+            .style('fill', colors.title)
             .text('REM Sleep Enhancement');
         
         const g = this.svg.append('g')
@@ -392,17 +402,18 @@ class MedicationVisualization {
             
             // Label
             brainG.append('text')
-                .attr('y', 70)
+                .attr('y', 80)
                 .attr('text-anchor', 'middle')
                 .attr('font-weight', 'bold')
-                .attr('font-size', '14px')
+                .attr('font-size', '20px')
+                .style('fill', colors.title)
                 .text(d.condition);
             
             // REM percentage
             brainG.append('text')
-                .attr('y', 90)
+                .attr('y', 110)
                 .attr('text-anchor', 'middle')
-                .attr('font-size', '18px')
+                .attr('font-size', '19px')
                 .attr('fill', colors.rem)
                 .attr('font-weight', 'bold')
                 .text(`${d.rem}% REM`);
@@ -419,9 +430,10 @@ class MedicationVisualization {
         // Title
         this.svg.append('text')
             .attr('x', this.width / 2)
-            .attr('y', 30)
+            .attr('y', 25)
             .attr('text-anchor', 'middle')
             .attr('class', 'chart-title')
+            .style('fill', colors.title)
             .text('Deep Sleep Preservation');
         
         const g = this.svg.append('g')
@@ -479,7 +491,7 @@ class MedicationVisualization {
                 .attr('text-anchor', 'middle')
                 .attr('font-weight', 'bold')
                 .attr('font-size', '16px')
-                .attr('fill', colors.deep)
+                .attr('fill', colors.title)
                 .text(`${d.deep}%`);
             
             // Condition label
@@ -489,6 +501,7 @@ class MedicationVisualization {
                 .attr('text-anchor', 'middle')
                 .attr('font-weight', 'bold')
                 .attr('font-size', '14px')
+                .attr('fill', i === 0 ? colors.placebo : colors.temazepam)
                 .text(d.condition);
         });
         
@@ -505,7 +518,7 @@ class MedicationVisualization {
             .attr('dy', '1em')
             .style('text-anchor', 'middle')
             .style('font-size', '12px')
-            .style('fill', '#7f8c8d')
+            .style('fill', colors.subtitle)
             .text('Deep Sleep (%)');
     }
 
@@ -519,9 +532,10 @@ class MedicationVisualization {
         // Title
         this.svg.append('text')
             .attr('x', this.width / 2)
-            .attr('y', 30)
+            .attr('y', 25)
             .attr('text-anchor', 'middle')
             .attr('class', 'chart-title')
+            .style('fill', colors.title)
             .text('Complete Sleep Architecture');
         
         const g = this.svg.append('g')
@@ -595,7 +609,7 @@ class MedicationVisualization {
         
         // Legend
         const legend = this.svg.append('g')
-            .attr('transform', `translate(${this.width - 150}, 60)`);
+            .attr('transform', `translate(${this.width - 80}, 60)`);
         
         stageLabels.forEach((stage, i) => {
             const legendItem = legend.append('g')
@@ -610,6 +624,7 @@ class MedicationVisualization {
                 .attr('x', 20)
                 .attr('y', 12)
                 .attr('font-size', '12px')
+                .style('fill', colors.subtitle)
                 .text(stage);
         });
     }
@@ -621,9 +636,10 @@ class MedicationVisualization {
         // Title
         this.svg.append('text')
             .attr('x', this.width / 2)
-            .attr('y', 30)
+            .attr('y', 25)
             .attr('text-anchor', 'middle')
             .attr('class', 'chart-title')
+            .style('fill', colors.title)
             .text('Individual Response Variability');
         
         const rawData = {
@@ -716,7 +732,7 @@ class MedicationVisualization {
             .attr('y', chartHeight + 40)
             .attr('text-anchor', 'middle')
             .style('font-size', '12px')
-            .style('fill', '#7f8c8d')
+            .style('fill', colors.subtitle)
             .text('Age (years)');
         
         g.append('text')
@@ -726,7 +742,7 @@ class MedicationVisualization {
             .attr('dy', '1em')
             .style('text-anchor', 'middle')
             .style('font-size', '12px')
-            .style('fill', '#7f8c8d')
+            .style('fill', colors.subtitle)
             .text('Sleep Efficiency');
         
         function animateCircles() {
@@ -820,9 +836,10 @@ class MedicationVisualization {
         // Title
         this.svg.append('text')
             .attr('x', this.width / 2)
-            .attr('y', 30)
+            .attr('y', 25)
             .attr('text-anchor', 'middle')
             .attr('class', 'chart-title')
+            .style('fill', colors.title)
             .text('Sleep Stage Percentages: Placebo → Temazepam');
 
         const g = this.svg.append('g')
@@ -874,7 +891,7 @@ class MedicationVisualization {
             .attr('y', d => y(d.value) - 8)
             .attr('text-anchor', 'middle')
             .attr('font-size', '14px')
-            .attr('fill', '#fff')
+            .attr('fill', colors.subtitle)
             .text(d => d.value.toFixed(2));
 
         // Axes
@@ -895,7 +912,7 @@ class MedicationVisualization {
             .attr('dy', '1em')
             .style('text-anchor', 'middle')
             .style('font-size', '12px')
-            .style('fill', '#7f8c8d')
+            .style('fill', colors.subtitle)
             .text('Percentage (%)');
 
         // Animation logic
@@ -923,14 +940,14 @@ class MedicationVisualization {
             setTimeout(() => {
                 bars.data(chartDataPlacebo, d => d.label)
                     .transition()
-                    .duration(1000)
+                    .duration(3000)
                     .attr('y', d => y(d.value))
                     .attr('height', d => chartHeight - y(d.value))
                     .attr('fill', d => placeboColorScale(d.value));
 
                 labels.data(chartDataPlacebo, d => d.label)
                     .transition()
-                    .duration(1000)
+                    .duration(3000)
                     .attr('y', d => y(d.value) - 8)
                     .tween('text', function(d) {
                         const i = d3.interpolateNumber(+this.textContent, d.value);
@@ -939,8 +956,8 @@ class MedicationVisualization {
                         };
                     });
 
-                // After 2s, repeat the animation (total cycle: 3+4+1+2=10s)
-                setTimeout(animateTransition, 3000);
+                // After 4s, repeat the animation (total cycle: 3+4+2+4=13s)
+                setTimeout(animateTransition, 5000);
             }, 5000);
         }
 
@@ -961,13 +978,14 @@ class MedicationVisualization {
             .attr('y', 40)
             .attr('text-anchor', 'middle')
             .attr('class', 'chart-title')
+            .style('fill', colors.title)
             .text('Treatment Impact Summary');
         
         // Key metrics in a circular layout
         const metrics = [
-            { label: 'Sleep Efficiency', value: '+7%', angle: 0, color: colors.temazepam },
-            { label: 'Wake Time', value: '-45%', angle: 120, color: colors.wake },
-            { label: 'REM Sleep', value: '+22%', angle: 240, color: colors.rem }
+            { label: 'Sleep Efficiency', value: '+7%', angle: 0, color: colors.temazepam, size: 7 },
+            { label: 'Wake Time', value: '-45%', angle: 120, color: colors.wake, size: 45 },
+            { label: 'REM Sleep', value: '+22%', angle: 240, color: colors.rem, size: 22 }
         ];
         
         const radius = 120;
@@ -976,12 +994,14 @@ class MedicationVisualization {
             const angle = (metric.angle * Math.PI) / 180;
             const x = centerX + Math.cos(angle) * radius;
             const y = centerY + Math.sin(angle) * radius;
+
+            console.log(parseFloat(metric.value))
             
             // Metric circle
             this.svg.append('circle')
                 .attr('cx', x)
                 .attr('cy', y)
-                .attr('r', 50)
+                .attr('r', 26 * Math.log(metric.size))
                 .attr('fill', metric.color)
                 .attr('opacity', 0.2)
                 .style('cursor', 'pointer')
@@ -1006,8 +1026,8 @@ class MedicationVisualization {
                 .attr('x', x)
                 .attr('y', y + 15)
                 .attr('text-anchor', 'middle')
-                .attr('font-size', '12px')
-                .attr('fill', '#7f8c8d')
+                .attr('font-size', '14px')
+                .attr('fill', colors.subtitle)
                 .text(metric.label);
         });
         
@@ -1016,18 +1036,18 @@ class MedicationVisualization {
             .attr('x', centerX)
             .attr('y', centerY)
             .attr('text-anchor', 'middle')
-            .attr('font-size', '16px')
+            .attr('font-size', '20px')
             .attr('font-weight', 'bold')
-            .attr('fill', '#2c3e50')
+            .attr('fill', colors.subtitle)
             .text('Significant');
         
         this.svg.append('text')
             .attr('x', centerX)
             .attr('y', centerY + 20)
             .attr('text-anchor', 'middle')
-            .attr('font-size', '16px')
+            .attr('font-size', '20px')
             .attr('font-weight', 'bold')
-            .attr('fill', '#2c3e50')
+            .attr('fill', colors.subtitle)
             .text('Improvements');
     }
 
