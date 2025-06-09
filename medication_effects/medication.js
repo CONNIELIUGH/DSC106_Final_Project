@@ -149,11 +149,6 @@ class MedicationVisualization {
                 .attr('r', circleRadius)
                 .attr('fill', groupData.color)
                 .attr('opacity', 0.8)
-                .style('cursor', 'pointer')
-                .on('mouseenter', (event) => {
-                    this.showTooltip(event, groupData.label, '1 participant');
-                })
-                .on('mouseleave', () => this.hideTooltip());
         });
         
         // Labels
