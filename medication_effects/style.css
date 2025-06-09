@@ -72,14 +72,13 @@ nav a {
 nav a:hover {
     border-bottom: 0.4em solid var(--color-accent);
     background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+    color: oklch(0.3961 0.012 200);
 }
 
 nav a.current {
     border-bottom: 0.4em solid oklch(80% 3% 200);
     padding-bottom: 0.1em;
 }
-
-
 
 .header h1 {
     font-size: 3rem;
@@ -195,7 +194,6 @@ nav a.current {
 
 /* Keep the moon sparkle animation on h2 before */
 .intro-text h2::before {
-    content: "🌙✨";
     font-size: 1.8rem;
     vertical-align: middle;
     margin-right: 12px;

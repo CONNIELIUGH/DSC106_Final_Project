@@ -9,8 +9,7 @@ const BASE_PATH = location.hostname === "localhost" || location.hostname === "12
 const pages = [
   { url: "", title: "Home" },
   { url: "medication_effects/", title: "Medication Effects" },
-  { url: "write_up/", title: "Write-Up" },
-  { url: "Data/", title: "Data" }
+  { url: "https://physionet.org/content/sleep-edfx/1.0.0/", title: "Data" }
 ];
 
 const nav = document.createElement("nav");

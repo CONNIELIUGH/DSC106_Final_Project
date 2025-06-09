@@ -14,7 +14,7 @@ const sleepData = {
 const colors = {
     primary: '#3498db',
     secondary: '#2c3e50',
-    wake: '#e74c3c',
+    wake: '#e6e600',
     light: '#3498db',
     deep: '#2c3e50',
     rem: '#9b59b6',
