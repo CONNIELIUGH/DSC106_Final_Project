@@ -7,8 +7,8 @@ const BASE_PATH = location.hostname === "localhost" || location.hostname === "12
   : "/DSC106_Final_Project/"; 
 
 const pages = [
-  { url: "", title: "Home" },
   { url: "medication_effects/", title: "Medication Effects" },
+  { url: "", title: "Predictor" },
   { url: "https://physionet.org/content/sleep-edfx/1.0.0/", title: "Data" }
 ];
 
