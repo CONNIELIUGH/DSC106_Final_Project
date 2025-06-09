@@ -26,7 +26,7 @@ const medicationData = {
 const colors = {
     placebo: '#e74c3c',
     temazepam: '#3498db',
-    wake: '#e74c3c',
+    wake: '#e6e600',
     light: '#87ceeb',
     deep: '#2c3e50',
     rem: '#9b59b6',
@@ -86,15 +86,32 @@ class MedicationVisualization {
         
         const centerX = this.width / 2;
         const centerY = this.height / 2;
+        const titleY = 40;
         
         // Title
         this.svg.append('text')
             .attr('x', centerX)
-            .attr('y', 40)
+            .attr('y', titleY)
             .attr('text-anchor', 'middle')
             .attr('class', 'chart-title')
             .attr('fill', colors.title)
             .text('Clinical Trial Design');
+
+        this.svg.append('text')
+            .attr('x', centerX)
+            .attr('y', titleY + 25)
+            .attr('text-anchor', 'middle')
+            .attr('fill', colors.subtitle)
+            .attr('font-size', '13px')
+            .text('NOTE: The same 22 participants are given a');
+
+        this.svg.append('text')
+            .attr('x', centerX)
+            .attr('y', titleY + 40)
+            .attr('text-anchor', 'middle')
+            .attr('fill', colors.subtitle)
+            .attr('font-size', '13px')
+            .text('placebo one night and Temazepam another');
         
         // Two groups representing placebo vs temazepam
         const groupData = [
@@ -109,26 +126,44 @@ class MedicationVisualization {
             .attr('class', 'study-group');
         
         // Circles representing study groups
-        groups.append('circle')
-            .attr('cx', d => d.x)
-            .attr('cy', centerY)
-            .attr('r', 80)
-            .attr('fill', d => d.color)
-            .attr('opacity', 0.7)
-            .style('cursor', 'pointer')
-            .on('mouseenter', (event, d) => {
-                this.showTooltip(event, d.label, '22 participants monitored with polysomnography');
-            })
-            .on('mouseleave', () => this.hideTooltip());
+        const numParticipants = 22;
+        const circleRadius = 10;
+        const circleSpacing = 26;
+        const columns = 6;
+        const rows = Math.ceil(numParticipants / columns);
+
+        // For each group, add 22 small circles
+        groups.each(function (groupData) {
+            const group = d3.select(this);
+            const startX = groupData.x - (columns - 1) * circleSpacing / 2;
+            const startY = centerY - (rows - 1) * circleSpacing / 2;
+
+            const participants = d3.range(numParticipants);
+
+            group.selectAll('circle')
+                .data(participants)
+                .enter()
+                .append('circle')
+                .attr('cx', d => startX + (d % columns) * circleSpacing)
+                .attr('cy', d => startY + Math.floor(d / columns) * circleSpacing)
+                .attr('r', circleRadius)
+                .attr('fill', groupData.color)
+                .attr('opacity', 0.8)
+                .style('cursor', 'pointer')
+                .on('mouseenter', (event) => {
+                    this.showTooltip(event, groupData.label, '1 participant');
+                })
+                .on('mouseleave', () => this.hideTooltip());
+        });
         
         // Labels
         groups.append('text')
             .attr('x', d => d.x)
-            .attr('y', centerY + 5)
+            .attr('y', centerY - 75)
             .attr('text-anchor', 'middle')
             .attr('fill', 'white')
             .attr('font-weight', 'bold')
-            .attr('font-size', '14px')
+            .attr('font-size', '16px')
             .text(d => d.label);
         
         // Sample size
