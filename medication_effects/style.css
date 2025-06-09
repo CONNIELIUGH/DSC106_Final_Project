@@ -125,9 +125,15 @@ nav a.current {
     }
 }
 
+.names {
+    color: #cbd9ff;
+    font-size: 0.95rem;
+}
+
 .subtitle, .byline {
     color: #cbd9ff;
     text-shadow: 0 0 6px rgba(180, 200, 255, 0.5);
+    font-size: 1.1rem;
 }
 
 
